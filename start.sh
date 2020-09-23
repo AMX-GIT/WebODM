@@ -70,7 +70,7 @@ if [[ "$WO_CREATE_MICMAC_PNODE" = "YES" ]]; then
 fi
 
 export WO_HOST="${WO_HOST:=localhost}"
-export WO_PORT="${WO_PORT:=8989}"
+export WO_PORT="${WO_PORT:=8000}"
 
 # Dump environment to .cronenv
 printenv > .cronenv
@@ -87,7 +87,7 @@ congrats(){
     (sleep 5; echo
 
     echo "Trying to establish communication..."
-    status=$(curl --max-time 300 -L -s -o /dev/null -w "%{http_code}" "$proto://localhost:8989")
+    status=$(curl --max-time 300 -L -s -o /dev/null -w "%{http_code}" "$proto://localhost:8000")
 
     if [[ "$status" = "200" ]]; then
         echo -e "\033[92m"      
@@ -112,7 +112,7 @@ congrats(){
 
 if [ "$1" = "--setup-devenv" ] || [ "$2" = "--setup-devenv" ] || [ "$1" = "--no-gunicorn" ]; then
     congrats
-    python manage.py runserver 0.0.0.0:8989
+    python manage.py runserver 0.0.0.0:8000
 else
     if [ -e /webodm ] && [ ! -e /webodm/build/static ]; then
        echo -e "\033[91mWARN:\033[39m /webodm/build/static does not exist, CSS, JS and other files might not be available."
