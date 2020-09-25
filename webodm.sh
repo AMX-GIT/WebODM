@@ -23,8 +23,7 @@ dev_mode=false
 
 # Load default values
 source "${__dirname}/.env"
-# DEFAULT_PORT="$WO_PORT"
-DEFAULT_PORT="8989"
+DEFAULT_PORT="$WO_PORT"
 DEFAULT_HOST="$WO_HOST"
 DEFAULT_MEDIA_DIR="$WO_MEDIA_DIR"
 DEFAULT_SSL="$WO_SSL"
